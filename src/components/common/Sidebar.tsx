@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { LuChevronFirst, LuChevronLast, LuMoreVertical } from "react-icons/lu"
+import { LuChevronFirst, LuChevronLast } from "react-icons/lu"
 
 interface SidebarProp {
     children: JSX.Element[];
@@ -40,7 +40,6 @@ export default function Sidebar({ children, adminName, adminEmail }: SidebarProp
                             <h4 className="font-semibold overflow-hidden">{adminName}</h4>
                             <span className="text-xs text-gray-600">{adminEmail}</span>
                         </div>
-                        <LuMoreVertical size={20} />
                     </div>
                 </div>
             </nav>
