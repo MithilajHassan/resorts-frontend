@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const resortAdminApi = createApi({
     reducerPath: 'resortAdminApi',
-    baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://luminova.fun/api' }),
     tagTypes: ['Rooms'],
     endpoints: (builder) => ({
 
