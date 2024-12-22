@@ -1,5 +1,5 @@
 import { AppDispatch } from "../../store"
-import { useSigninMutation } from "../../slices/authApiSlice"
+import { useAdminSigninMutation, useSigninMutation } from "../../slices/authApiSlice"
 import { setAdminAuth, setCredentials } from "../../slices/authSlice"
 import { FormEvent, useEffect, useState } from "react"
 import { FcGoogle } from "react-icons/fc"
@@ -22,6 +22,7 @@ const SigninForm: React.FC<SigninFormProps> = ({ role, signupUrl, nextPage }) =>
     const { adminInfo } = useSelector((state: RootState) => state.auth)
     const { userInfo } = useSelector((state: RootState) => state.auth)
     const [signin, { isLoading }] = useSigninMutation()
+    const [adminSignin, { isLoading:adminIsLoding }] = useAdminSigninMutation()
     const dispatch = useDispatch<AppDispatch>()
     const navigate = useNavigate()
 
@@ -40,10 +41,11 @@ const SigninForm: React.FC<SigninFormProps> = ({ role, signupUrl, nextPage }) =>
     const submitHandler = async (e: FormEvent) => {
         e.preventDefault()
         try {
-            const res = await signin({ email, password, role }).unwrap()
             if (role == 'user') {
+                const res = await signin({ email, password, role }).unwrap()
                 dispatch(setCredentials(res))
             } else {
+                const res = await adminSignin({ email, password, role }).unwrap()
                 dispatch(setAdminAuth(res))
             }
             navigate(nextPage)
@@ -99,7 +101,7 @@ const SigninForm: React.FC<SigninFormProps> = ({ role, signupUrl, nextPage }) =>
                     </div></>)}
                 {signupUrl && (<p className="text-center">New user?<Link to={signupUrl} className="text-blue-700 underline"> signup</Link></p>)}
             </form>
-            {isLoading && (
+            {(isLoading || adminIsLoding) && (
                 <>
                     <div className="fixed inset-0 bg-gray-900 bg-opacity-50"></div>
                     <div className="absolute modal p-8 bg-white">
