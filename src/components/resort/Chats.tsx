@@ -109,7 +109,7 @@ const Chats: React.FC = () => {
                 <aside className="w-1/4 bg-white border-x border-blue-300">
 
                     <ul className="py-4 space-y-1">
-                        {rececivers?.length && rececivers.map((conversation) => (
+                        {rececivers?.length ? rececivers.map((conversation) => (
                             <li
                                 key={conversation.id}
                                 className={`${active == conversation.id ? "bg-blue-300" : "bg-blue-50"} p-3 flex items-center  hover:bg-blue-300 cursor-pointer text-blue-800 font-medium`}
@@ -118,7 +118,7 @@ const Chats: React.FC = () => {
                                 <img className='w-8 rounded-full mr-2' src={conversation.avatar} />
                                 {conversation.name}
                             </li>
-                        ))}
+                        )):''}
                     </ul>
                 </aside>
 
