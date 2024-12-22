@@ -4,7 +4,7 @@ import { ResortQuery } from './searchSlice';
 
 export const userApi = createApi({
     reducerPath: 'userApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://luminova.fun/api' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://luminova.fun/api', credentials: 'include' }),
     endpoints: (builder) => ({
 
         updateUser: builder.mutation<{ id: string, name: string, email: string, phone: number, avatar?: string }, { id: string, name: string, phone: number, avatar?: string }>({
