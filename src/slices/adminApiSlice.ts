@@ -3,7 +3,7 @@ import { CategoryDetails, FacilityDetails, IBanner, ICoupon, IResort, IUser } fr
 
 export const adminApi = createApi({
     reducerPath: 'adminApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://luminova.fun/api' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://luminova.fun/api', credentials: 'include' }),
     endpoints: (builder) => ({
 
         //------------------------ Category Management-----------------------------//
