@@ -9,14 +9,6 @@ export default defineConfig(({ mode }) => {
       'process.env': env
     },
   plugins: [react()],
-  server:{
-    port:5000,
-    proxy:{
-      '/api':{
-        target:'https://luminova.fun',
-        changeOrigin: true,
-      }
-    }
-  }
+  
 }
 })
